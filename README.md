@@ -14,6 +14,18 @@ Las aplicaciones llamadas *RESTful* son aquellas emplean el protocolo *HTTP* par
 operaciones tipicamente llamadas CRUD basandose en el concepto que se trata de representar, ya que de por si *REST* no es
 un estandar.
 
+Para que un systema sea *REST* dbe cumplir 6 restricciones, en caso de fallar una se dice que no es un sistema RESTful.
+* Interface uniforme: La provee el protocolo *HTTP*, una forma clara de comunicarse con los servicios.
+* Sin estado: El Servidor nunca debe mantener estado sobre el cliente, cada que el cliente manda un mensaje para ser
+procesado, este debe contener la información necesaria para que siempre el servidor pueda procesarla sin tener que conocer
+algo de antemano.
+* Cacheable: cada uno de los recursos que se adquieren pueden ser cacheados, ya sea de manera implícita, explícita o 
+negiociada entre el cliente y el servidor.
+* Cliente - servidor: La arquitectura del sistema siempre debe ser cliente servidor.
+* Sistema por capas: El cliente al mandar mensajes no siempre debe saber quien responde, en el caso del protocolo *HTTP*
+es común que se responda un recurso cacheado, con lo cual se identifica el sistema por capas.
+* Código por demanda (Opcional): Cuando el servidor extiende el código del cliente para añadir funcionalidades, etc.
+
 REST como servicios livianos
 ----------------------------
 
