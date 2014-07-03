@@ -117,3 +117,18 @@ Para el diseño de servicios que sean mas descriptivos se recomienda el uso de v
 Manejo de recursos
 ------------------
 
+El manejo típico de recursos para operaciones *CRUD* se puede realizar de la siguiente manera (suponiendo que estamos realizando las operaciones sobre el recurso *usuario*):
+
+* Para obtener la colección de recursos: GET http://example.com/users
+* Para insertar un nuevo registro: POST http://example.com/users
+* Para obtener un recurso: GET http://example.com/users/{id}
+* Para actualizar un recurso: PUT http://example.com/users/{id}
+* Para eliminar un recurso: DELETE http://example.com/users/{id}
+
+Ahora para un diseño un poco mas complejo donde se tienen recursos que pertenecen o tienen relaciones con otros recursos, se emplea la jerarquia para que sea significativo, para este caso suponer que un usuario puede realizar ordenes (por lo tanto la entidad usuario tiene un listado de ordenes asociadas):
+
+* Para obtener las ordenes de un usuario en específico: GET http://example.com/users/{userId}/orders
+* Para crear una orden a un usuario en espcífico: POST http://example.com.users/{userId}/orders
+* Para obtener una orden específica de un usuario: GET http://example.com/users/{userId}/orders/{orderId}
+* Para actualizar una orden en específico: PUT http://example.com/users/{userId}/orders/{orderId}
+* Para eliminar la orden específica de un usuario: DELETE http://example.com/users/{userId}/orders/{orderId}
