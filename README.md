@@ -132,3 +132,15 @@ Ahora para un diseño un poco mas complejo donde se tienen recursos que pertenec
 * Para obtener una orden específica de un usuario: GET http://example.com/users/{userId}/orders/{orderId}
 * Para actualizar una orden en específico: PUT http://example.com/users/{userId}/orders/{orderId}
 * Para eliminar la orden específica de un usuario: DELETE http://example.com/users/{userId}/orders/{orderId}
+
+Idempotencia
+------------
+
+Se dice que la idempotencia es la propiedad que tiene algo para realizar la misma operación varias veces obteniendo siempre el mismo resultado, para ello *REST* tiene un enfoque y es que toda acción que no sea idempotente debe ser realiazada con el método *POST*, por ejemplo siempre que realizemos una acción *GET* siempre se obtiene la misma representación del recurso, si se realiza una actualización de un recurso con el método *PUT* siempre se obtiene el mismo código de estatus, con *DELETE* es mas complejo pero se supone que debe pasar igual, para la ejecución de la acción se debe tener el mismo resultado, pero cuando se realiza un método *POST* el recurso se crea pero si se vuelve a realiza la acción la respuesta es diferente ya que el recurso es diferente o la creación de un duplicado no es posible.
+
+Recursos
+--------
+
+Este documento guía fue basado en los siguientes recursos:
+* [REST API Tutorial](http://www.restapitutorial.com/)
+* [Learn REST: A Tutorial](http://rest.elkstein.org/)
