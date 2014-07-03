@@ -89,3 +89,15 @@ usuarios en vez de usuario_list.
 
 ### Emplear los códigos de respuesta *HTTP* para indicar el estatus
 
+Estos códigos sirven para dar una respuesta a la petición indicando al cliente que ha pasado con esta, para ello es importante conocer el significado de lo códigos mas comunes.
+
+* 200 ok: estatus general empleado normalmente para decir que todo salió bien.
+* 201 created: indica que la creación del recurso fué exitosa via POST o PUT, se envia el header Location para indicar donde quedó el recurso, el cuerpo del mensaje puede o no tener contenido.
+* 204 no content: Indica éxito pero que no hay nada en el cuerpo del mensaje, normalmente se usa en operaciones de actualización o eliminación.
+* 400 bad request: error general que indica que el request no fué procesado debido a un estado inválido, validaciónes del dominio, faltan datos, etc.
+* 401 unauthorized: código de error que se emplea cuando el token de autenticación del usuario es inválido o no está.
+* 403 forbidden: código de error que se emplea cuando un usuario no autorizado trata de realizar una acción sobre un recurso el cual no es alcanzable por alguna razón.
+* 404 not found: código de error que se emplea cuando el recurso que se está intentando obtener no existe.
+* 405 method no allowed: Se emplea cuando la URL si pertenece a un recurso pero el método que se está empleando no es válido.
+* 409 conflict: es la respuesta a un conflicto al procesar la petición, ya que se está creando un recurso duplicado o eliminar entidades en cascada cuando no es posible.
+* 500 internal server error: nunca retornar este código a propósito, error común del servidor cuando algo inesperado ha pasado.
