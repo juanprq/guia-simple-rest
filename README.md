@@ -142,5 +142,6 @@ Recursos
 --------
 
 Este documento guía fue basado en los siguientes recursos:
-* [REST API Tutorial](http://www.restapitutorial.com/)
-* [Learn REST: A Tutorial](http://rest.elkstein.org/)
+
+* [REST API Tutorial.](http://www.restapitutorial.com/)
+* [Learn REST: A Tutorial.](http://rest.elkstein.org/)
