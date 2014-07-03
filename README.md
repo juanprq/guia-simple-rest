@@ -101,3 +101,19 @@ Estos códigos sirven para dar una respuesta a la petición indicando al cliente
 * 405 method no allowed: Se emplea cuando la URL si pertenece a un recurso pero el método que se está empleando no es válido.
 * 409 conflict: es la respuesta a un conflicto al procesar la petición, ya que se está creando un recurso duplicado o eliminar entidades en cascada cuando no es posible.
 * 500 internal server error: nunca retornar este código a propósito, error común del servidor cuando algo inesperado ha pasado.
+
+### Ofrecer *JSON* y XML
+
+Generalmente se favorece el soporta hacia *JSON* por ser un formato mucho mas simple, en caso que se requiera explicitamente un soporte hacia xml la implementación de este no es estrictamente necesaria, ya que en el momento de empezar a construir respuestas en este formato, empezamos a hablar de esquemas y validaciones, si es posible ofrecer la implementación en los 2 formatos, construir un *JSON* y hacer que el xml se parezca a este, y espcificando en el servicio .xml o .*JSON* retornar el formato especificado aunque tener en cuenta que hoy en día es muy raro ver apis que retornen xml ya que es mas costoso su consumo.
+
+### Creación de servicios pequeños y puntuales
+
+Cuando se inicia el diseño e implementación de una API es mejor empezar realizando servicios que cumplan operaciones sobre recursos pequeños como el modelo de dominio en si, esto es debido a que es mas fácil crear luego sobre estos servicios otros que sean mas complejos y realicen operaciones mas complejas y no empezar por servicios grandes que no se puedan descomponer en otros mas pequeños después.
+
+### Consideración de la conectividad
+
+Para el diseño de servicios que sean mas descriptivos se recomienda el uso de vínculos; se recomienda que cuando un servicio responda incluya en los headers vinculos siempre y cuando estos tengan un significado para el servicio, por ejemplo, si un recurso acaba de ser creado, en el header Location poner la URI o el vinculo del recurso, si es una colección, indicar en los headers cual es la primera página, última, siguiente y anterior, para ello se puede usar la cabecera Link como se recomienda en la especificación o alguna representación *JSON* (hay varias especificaciones para ello).
+
+Manejo de recursos
+------------------
+
