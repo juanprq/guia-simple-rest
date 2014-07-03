@@ -10,20 +10,19 @@ en un protocolo de comunicación cacheable, normalmente *HTTP*.
 Empleado usualmente como un estilo arquitectónico para el diseño de aplicaciones que trabajan por medio de redes, con un
 enfoque simple realizando llamados *HTTP* entre maquinas en vez de emplear protocolos complejos como CORBA, RCP o SOAP.
 
-Las aplicaciones llamadas *RESTful* son aquellas emplean el protocolo *HTTP* para poner datos en el sistema o adquirirlos
-operaciones tipicamente llamadas CRUD basandose en el concepto que se trata de representar, ya que de por si *REST* no es
-un estandar.
+Las aplicaciones llamadas *RESTful* ponen y adquieren datos del sistema realizando operaciones (CRUD) sobre recursos.
 
-Para que un systema sea *REST* dbe cumplir 6 restricciones, en caso de fallar una se dice que no es un sistema RESTful.
+Para que un systema sea *REST* debe cumplir 6 restricciones, en caso de fallar una se dice que no es un sistema RESTful:
+
 * Interface uniforme: La provee el protocolo *HTTP*, una forma clara de comunicarse con los servicios.
 * Sin estado: El Servidor nunca debe mantener estado sobre el cliente, cada que el cliente manda un mensaje para ser
 procesado, este debe contener la información necesaria para que siempre el servidor pueda procesarla sin tener que conocer
 algo de antemano.
 * Cacheable: cada uno de los recursos que se adquieren pueden ser cacheados, ya sea de manera implícita, explícita o 
 negiociada entre el cliente y el servidor.
-* Cliente - servidor: La arquitectura del sistema siempre debe ser cliente servidor.
-* Sistema por capas: El cliente al mandar mensajes no siempre debe saber quien responde, en el caso del protocolo *HTTP*
-es común que se responda un recurso cacheado, con lo cual se identifica el sistema por capas.
+* Cliente - servidor: Requisito básico en la arquitectura del sistema.
+* Sistema por capas: El cliente al mandar mensajes no debe saber quien responde, en el caso del protocolo *HTTP*
+es común que se responda un recurso cacheado.
 * Código por demanda (Opcional): Cuando el servidor extiende el código del cliente para añadir funcionalidades, etc.
 
 REST como servicios livianos
@@ -31,6 +30,7 @@ REST como servicios livianos
 
 Como una alternativa a protocolo mas complejos, el enfoque *REST* puede ser empelado para la creación de servicios web
 los cuales tienen ciertas características:
+
 * Independiente de la plataforma (los servcios funcionan bajo linux, windows, etc...).
 * Independiente del lenguaje (pueden ser implementados en muchos lenguaje de programación y a su vez interactuar entre ellos).
 * Basados en estandar (*HTTP*).
@@ -50,6 +50,7 @@ acciones se realizan sobre recursos, por ello se emplea una *URL* que se encarca
 
 Los métodos *HTTP* son verbos que le indican al servidor una acción a realizar sobre el recurso especificado, para ello
 el protocolo especifica el uso de los métodos de la siguiente manera:
+
 * GET: acción para obtener un recurso, se emplea generalmente para obtener colecciones de entidades o para un recurso en
 específico, ej: /clientes, /cliente/{id}
 * PUT: acción para actualizar un recurso.
@@ -59,3 +60,4 @@ específico, ej: /clientes, /cliente/{id}
 Hay que tener en cuenta que normalmente los navegadores no soportan todos los métodos, por lo que normalmente se emplea 
 el método post y por medio de campos enmascarados en el cuerpo de la petición se le indica al servidor que método se está
 usando, muchos frameworks traen esta funcionalidad implementada y generalmente es transparente para el usuario.
+
