@@ -90,7 +90,7 @@ usuarios en vez de usuario_list.
 
 Estos códigos sirven para dar una respuesta a la petición indicando al cliente que ha pasado con esta, para ello es importante conocer el significado de lo códigos mas comunes.
 
-* 200 ok: estatus general empleado normalmente para decir que todo salió bien.
+* 200 ok: estatus general, empleado normalmente para decir que todo salió bien.
 * 201 created: indica que la creación del recurso fué exitosa via POST o PUT, se envia el header Location para indicar donde quedó el recurso, el cuerpo del mensaje puede o no tener contenido.
 * 204 no content: Indica éxito pero que no hay nada en el cuerpo del mensaje, normalmente se usa en operaciones de actualización o eliminación.
 * 400 bad request: error general que indica que el request no fué procesado debido a un estado inválido, validaciónes del dominio, faltan datos, etc.
@@ -101,17 +101,17 @@ Estos códigos sirven para dar una respuesta a la petición indicando al cliente
 * 409 conflict: es la respuesta a un conflicto al procesar la petición, ya que se está creando un recurso duplicado o eliminar entidades en cascada cuando no es posible.
 * 500 internal server error: nunca retornar este código a propósito, error común del servidor cuando algo inesperado ha pasado.
 
-### Ofrecer *JSON* y XML
+### Ofrecer *JSON* y *XML*
 
-Generalmente se favorece el soporta hacia *JSON* por ser un formato mucho mas simple, en caso que se requiera explicitamente un soporte hacia xml la implementación de este no es estrictamente necesaria, ya que en el momento de empezar a construir respuestas en este formato, empezamos a hablar de esquemas y validaciones, si es posible ofrecer la implementación en los 2 formatos, construir un *JSON* y hacer que el xml se parezca a este, y espcificando en el servicio .xml o .*JSON* retornar el formato especificado aunque tener en cuenta que hoy en día es muy raro ver apis que retornen xml ya que es mas costoso su consumo.
+Por ser un formato mucho mas simple generalmente se favorece el soporte hacia *JSON*, en caso que se requiera explicitamente un soporte hacia *XML* la implementación de este no es estrictamente necesaria, ya que en el momento de empezar a construir respuestas en este formato se empieza a hablar de esquemas y validaciones; siempre y cuando sea posible, ofrecer la implementación en los 2 formatos, construir un *JSON* y hacer que el *XML* se parezca a este, y espcificando en el servicio .xml o .json retornar el formato especificado; tener en cuenta que hoy en día es muy raro ver APIs que usen formato *XML* ya que es mas costoso su consumo.
 
 ### Creación de servicios pequeños y puntuales
 
-Cuando se inicia el diseño e implementación de una API es mejor empezar realizando servicios que cumplan operaciones sobre recursos pequeños como el modelo de dominio en si, esto es debido a que es mas fácil crear luego sobre estos servicios otros que sean mas complejos y realicen operaciones mas complejas y no empezar por servicios grandes que no se puedan descomponer en otros mas pequeños después.
+Cuando se inicia el diseño e implementación de una API es mejor empezar realizando servicios que cumplan operaciones sobre recursos pequeños como el modelo de dominio en si, esto es debido a que es mas fácil crear luego sobre estos servicios otros que sean mas complejos y realicen operaciones mas intricados y no empezar por servicios grandes que no se puedan descomponer en otros mas pequeños después.
 
 ### Consideración de la conectividad
 
-Para el diseño de servicios que sean mas descriptivos se recomienda el uso de vínculos; se recomienda que cuando un servicio responda incluya en los headers vinculos siempre y cuando estos tengan un significado para el servicio, por ejemplo, si un recurso acaba de ser creado, en el header Location poner la URI o el vinculo del recurso, si es una colección, indicar en los headers cual es la primera página, última, siguiente y anterior, para ello se puede usar la cabecera Link como se recomienda en la especificación o alguna representación *JSON* (hay varias especificaciones para ello).
+Para el diseño de servicios que sean mas descriptivos se recomienda el uso de vínculos; es aconsejable que cuando un servicio retorne una respuesta incluya en los headers vinculos, siempre y cuando estos tengan un significado para el servicio, por ejemplo, si un recurso acaba de ser creado, en el header Location poner la URI o el vinculo del recurso, si es una colección, indicar en los headers cual es la primera página, última, siguiente y anterior, para ello se puede usar la cabecera Link como se recomienda en la especificación o alguna representación *JSON* (hay varias especificaciones para ello).
 
 Manejo de recursos
 ------------------
@@ -124,7 +124,7 @@ El manejo típico de recursos para operaciones *CRUD* se puede realizar de la si
 * Para actualizar un recurso: PUT http://example.com/users/{id}
 * Para eliminar un recurso: DELETE http://example.com/users/{id}
 
-Ahora para un diseño un poco mas complejo donde se tienen recursos que pertenecen o tienen relaciones con otros recursos, se emplea la jerarquia para que sea significativo, para este caso suponer que un usuario puede realizar ordenes (por lo tanto la entidad usuario tiene un listado de ordenes asociadas):
+Para un diseño un poco mas complejo donde se tienen recursos que pertenecen o tienen relaciones con otros recursos, se emplea la jerarquia para darle un significado, en este caso suponer que un usuario puede realizar ordenes (por lo tanto la entidad usuario tiene un listado de ordenes asociadas):
 
 * Para obtener las ordenes de un usuario en específico: GET http://example.com/users/{userId}/orders
 * Para crear una orden a un usuario en espcífico: POST http://example.com.users/{userId}/orders
