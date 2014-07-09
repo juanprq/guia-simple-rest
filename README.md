@@ -132,6 +132,15 @@ Para un diseño un poco mas complejo donde se tienen recursos que pertenecen o t
 * Para actualizar una orden en específico: PUT http://example.com/users/{userId}/orders/{orderId}
 * Para eliminar la orden específica de un usuario: DELETE http://example.com/users/{userId}/orders/{orderId}
 
+Ejemplos de como se deben emplear los métodos sobre un recurso y lo que responde el servicio ante las diferentes situaciones:
+
+| Método | Colección (/usuarios) | Recurso específico (/usuarios/{id}) |
+|--------|-----------------------|-------------------------------------|
+| GET    | 200 (Ok), Lista de usuarios, usar paginación, ordenamiento y filtrado para navegar por listas grandes. | 200 (Ok), Usuario específico. 404 (Not Dound) si el id no existe o es inválido. |
+| PUT    | 404 (Not Found), a menos que se quiera implementar un servicio que actualize o reemplace toda la colección. | 200 (Ok) o 204 (Not Content). 404 (Not Found), si el identificador no es válido o no existe. |
+| POST   | 201 (Created). Usar el header Location con el vinculo donde quedó creado el nuevo recurso (/usuarios/{id}). | 404 (Not Found). |
+| DELETE | 404 (Not Found), a menos que se quiera implementar un servicio que elimine toda la colección. | 200 (Ok). 404 (Not Found), en caso de ser un identificador inválido o no existir. |
+
 Idempotencia
 ------------
 
