@@ -11,7 +11,7 @@ enfoque simple realizando llamados *HTTP* entre maquinas en vez de emplear proto
 
 Las aplicaciones llamadas *RESTful* ponen y adquieren datos del sistema realizando operaciones (CRUD) sobre recursos.
 
-Para que un sistema sea *REST* debe cumplir 6 restricciones, en caso de fallar una se dice que no es un sistema RESTful:
+Para que un sistema sea *REST* debe cumplir 6 restricciones, en caso de fallar una se dice que no es un sistema *RESTful*:
 
 * Interface uniforme: La provee el protocolo *HTTP*, una forma clara de comunicarse con los servicios.
 * Sin estado: El Servidor nunca debe mantener estado sobre el cliente, cada que el cliente manda un mensaje para ser
